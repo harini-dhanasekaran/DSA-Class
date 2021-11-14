@@ -12,6 +12,15 @@ struct node{
 
 };
 
+void createLL(node *head){
+  node *itr = head;
+  for(int i = 2; i <= 5; i++){
+    node *newNode = new node(i);
+    itr -> next = newNode;
+    itr = itr -> next;
+  }
+}
+
 void printLL(node *head){
   node *itr = head;
   while(itr != NULL){
@@ -23,23 +32,23 @@ void printLL(node *head){
 
 node* reverseLL(node *head){
   node *prev = NULL, *cur = NULL, *nxt = head;
+
   while(nxt != NULL){
     cur = nxt;
     nxt = nxt -> next;
     cur -> next = prev;
     prev = cur;
   }
+
   return cur;
 }
+
+
 int main(){
   //create Linked List
   node *head = new node(1);
-  node * itr = head;
-  for(int i = 2; i <= 5; i++){
-    node *temp = new node(i);
-    itr -> next = temp;
-    itr = itr -> next;
-  }
+
+  createLL(head);
   node *newHead = reverseLL(head);
   printLL(newHead);
 
